@@ -98,3 +98,85 @@ Provides an interactive conversational interface featuring:
 - Persistent conversation history
 - Real-time control over recommendation trajectories
 - AI-guided music discovery beyond traditional collaborative filtering
+
+---
+
+# 💻 Deployment Runbook: Replicating on Dify
+
+Follow the steps below to recreate the complete AI-powered music discovery workflow.
+
+## Step A: Initialize the Application Workflow
+
+1. Log in to your **Dify.ai** account.
+2. Navigate to **Studio**.
+3. Click **Create from Blank**.
+4. Select **Import DSL File**.
+5. Upload:
+
+   ```text
+   workflow/Knowledge Retrieval_ A Smart Chatbot.yml
+   ```
+
+This automatically recreates the complete Advanced Chat workflow, including all nodes, connections, and configurations.
+
+---
+
+## Step B: Create and Bind the Knowledge Base
+
+1. Navigate to the **Knowledge** tab.
+2. Click **Create Knowledge**.
+3. Upload:
+
+   ```text
+   data/spotify_master_feedback_compiled.txt
+   ```
+
+4. Select **High Quality** indexing.
+5. Allow Dify to complete document segmentation and embedding generation.
+6. Save the knowledge base.
+
+---
+
+## Step C: Link the Knowledge Base & Deploy
+
+1. Re-open the imported workflow in **App Studio**.
+2. Select the **🌟 Knowledge Retrieval** node.
+3. Attach the knowledge base created in Step B.
+4. Verify that the retrieval output variable
+
+   ```text
+   {{#1711528915811.result#}}
+   ```
+
+   is correctly mapped into the primary LLM context input.
+
+5. Click **Publish**.
+6. Select **Run as Web App**.
+
+Dify will generate a public deployment URL for your AI-powered music discovery application.
+
+---
+
+# 🛠️ Infrastructure Dependencies
+
+| Layer | Technology |
+|--------|------------|
+| **Data Collection** | Apify Cloud Platform |
+| **Data Processing** | Python 3.11, Pandas |
+| **Knowledge Base** | Dify Knowledge Index (High Quality Embeddings) |
+| **Workflow Engine** | Dify Advanced Chat Workflow (v0.6.0) |
+| **LLM Provider** | OpenAI GPT-4 API |
+| **Integration** | `langgenius/openai` Plugin |
+| **Deployment** | Dify Web Application |
+
+---
+
+# 📌 Technology Stack
+
+- **LLM:** OpenAI GPT-4
+- **Workflow Orchestration:** Dify Advanced Chat
+- **Knowledge Retrieval:** Retrieval-Augmented Generation (RAG)
+- **Data Sources:** Reddit, Google Play Store, Apple App Store, Spotify Community Forums
+- **Data Processing:** Python, Pandas
+- **Vector Knowledge Base:** Dify Knowledge
+- **Deployment:** Dify Web App
